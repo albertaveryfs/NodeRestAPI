@@ -8,15 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class Student {
+class Course {
     constructor(norm) {
         this.model = [{
                 id: { type: Number, key: 'primary' },
                 name: { type: String, maxlength: 24 },
-                email: { type: String, maxlength: 24 },
-                phonenum: { type: String, maxlength: 24 },
-                class: { type: String, maxlength: 24 },
-                group: { type: String, maxlength: 24 },
+                professor: { type: String, maxlength: 24 },
                 user_id: {
                     type: Number,
                     key: 'foreign',
@@ -24,73 +21,73 @@ class Student {
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 },
-            }, 'A table to store students information model',
+            }, 'A table to store course information model',
             [
                 {
-                    route: '/get-all-students',
+                    route: '/get-all-courses',
                     method: 'POST',
-                    callback: this.getAllStudents,
+                    callback: this.getAllCourses,
                     requireToken: true,
                 },
                 {
-                    route: '/get-student-by-id/:id',
+                    route: '/get-course-by-id/:id',
                     method: 'POST',
-                    callback: this.getStudentById,
+                    callback: this.getCourseById,
                     requireToken: true,
                 },
                 {
-                    route: '/create-student',
+                    route: '/create-course',
                     method: 'POST',
-                    callback: this.createStudent,
+                    callback: this.createCourse,
                     requireToken: true,
                 },
                 {
-                    route: '/update-student/id/:id',
+                    route: '/update-course/id/:id',
                     method: 'PUT',
-                    callback: this.updateStudent,
+                    callback: this.updateCourse,
                     requireToken: true,
                 },
                 {
-                    route: '/delete-student/id/:id',
+                    route: '/delete-course/id/:id',
                     method: 'DELETE',
-                    callback: this.deleteStudent,
+                    callback: this.deleteCourse,
                     requireToken: true,
                 }
             ]
         ];
     }
-    createStudent(model) {
+    createCourse(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-            let studentCtrl = model.controller;
-            let resp = yield studentCtrl.insert(req, null, null);
+            let courseCtrl = model.controller;
+            let resp = yield courseCtrl.insert(req, null, null);
             res.json({ message: 'Success', resp });
         });
     }
-    updateStudent(model) {
+    updateCourse(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-            let studentCtrl = model.controller;
-            let resp = yield studentCtrl.update(req, null, null);
+            let courseCtrl = model.controller;
+            let resp = yield courseCtrl.update(req, null, null);
             res.json({ message: 'Success', resp });
         });
     }
-    deleteStudent(model) {
+    deleteCourse(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-            let studentCtrl = model.controller;
-            let resp = yield studentCtrl.remove(req, null, null);
+            let courseCtrl = model.controller;
+            let resp = yield courseCtrl.remove(req, null, null);
             res.json({ message: 'Success', resp });
         });
     }
-    getAllStudents(model) {
+    getAllCourses(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             req.body = {
                 get: ['*']
             };
-            let studentCtrl = model.controller;
-            let resp = yield studentCtrl.get(req, null, null);
+            let courseCtrl = model.controller;
+            let resp = yield courseCtrl.get(req, null, null);
             res.json({ message: 'Success', resp });
         });
     }
-    getStudentById(model) {
+    getCourseById(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             req.body = {
                 get: ['*'],
@@ -98,8 +95,8 @@ class Student {
                     id: req.params.id
                 }
             };
-            let studentCtrl = model.controller;
-            let resp = yield studentCtrl.get(req, null, null);
+            let courseCtrl = model.controller;
+            let resp = yield courseCtrl.get(req, null, null);
             res.json({ message: 'Success', resp });
         });
     }
@@ -110,4 +107,4 @@ class Student {
         return this._model;
     }
 }
-exports.Student = Student;
+exports.Course = Course;
