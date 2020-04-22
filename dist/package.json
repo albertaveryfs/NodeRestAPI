@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:mac": "rimraf dist && gulp start && env $(cat .env) node --max_old_space_size=8192 --stack_size=32000 dist/index.js",
     "start:win": "rimraf dist && gulp start && env cat .env node --max_old_space_size=8192 --stack_size=32000 dist/index.js",
-    "start":  "rimraf dist && gulp start && node --max_old_space_size=8192 --stack_size=32000 dist/index.js",
+    "start": "rimraf dist && gulp start && node --max_old_space_size=8192 --stack_size=32000 dist/index.js",
     "clear-dist": "rimraf dist"
   },
   "author": "Lucas Phan",
@@ -30,6 +30,7 @@
     "typescript": "^2.0.6"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.15.2",
     "debug": "^2.2.0",
     "dotenv": "^4.0.0",
