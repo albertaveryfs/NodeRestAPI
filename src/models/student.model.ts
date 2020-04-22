@@ -30,11 +30,54 @@ export class Student {
         method: 'POST',
         callback: this.getStudentById,
         requireToken: true,
+      },
+      {
+        route: '/create-student',
+        method: 'POST',
+        callback: this.createStudent,
+        requireToken: true,
+      },
+      {
+        route: '/update-car/id/:id',
+        method: 'PUT',
+        callback: this.updateStudent,
+        requireToken: true,
+      },
+      {
+        route: '/delete-car/id/:id',
+        method: 'DELETE',
+        callback: this.deleteStudent,
+        requireToken: true,
       }
     ]
     ];
   }
 
+  createStudent(model: any) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+
+      let studentCtrl = model.controller;
+      let resp = await studentCtrl.insert(req, null, null);
+      res.json({ message: 'Success', resp });
+    }
+  }
+
+  updateStudent(model: any) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+      let studentCtrl = model.controller;
+      let resp = await studentCtrl.update(req, null, null);
+      res.json({ message: 'Success', resp });
+    }
+  }
+
+  deleteStudent(model: any) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+
+      let studentCtrl = model.controller;
+      let resp = await studentCtrl.remove(req, null, null);
+      res.json({ message: 'Success', resp });
+    }
+  }
 
   getAllStudents(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {

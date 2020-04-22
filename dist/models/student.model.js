@@ -37,9 +37,48 @@ class Student {
                     method: 'POST',
                     callback: this.getStudentById,
                     requireToken: true,
+                },
+                {
+                    route: '/create-student',
+                    method: 'POST',
+                    callback: this.createStudent,
+                    requireToken: true,
+                },
+                {
+                    route: '/update-car/id/:id',
+                    method: 'PUT',
+                    callback: this.updateStudent,
+                    requireToken: true,
+                },
+                {
+                    route: '/delete-car/id/:id',
+                    method: 'DELETE',
+                    callback: this.deleteStudent,
+                    requireToken: true,
                 }
             ]
         ];
+    }
+    createStudent(model) {
+        return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            let studentCtrl = model.controller;
+            let resp = yield studentCtrl.insert(req, null, null);
+            res.json({ message: 'Success', resp });
+        });
+    }
+    updateStudent(model) {
+        return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            let studentCtrl = model.controller;
+            let resp = yield studentCtrl.update(req, null, null);
+            res.json({ message: 'Success', resp });
+        });
+    }
+    deleteStudent(model) {
+        return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            let studentCtrl = model.controller;
+            let resp = yield studentCtrl.remove(req, null, null);
+            res.json({ message: 'Success', resp });
+        });
     }
     getAllStudents(model) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
