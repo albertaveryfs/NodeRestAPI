@@ -17,6 +17,7 @@ class Student {
                 phonenum: { type: String, maxlength: 24 },
                 class: { type: String, maxlength: 24 },
                 group: { type: String, maxlength: 24 },
+                image_url: { type: String, maxlength: 1000 },
                 user_id: {
                     type: Number,
                     key: 'foreign',
