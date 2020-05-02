@@ -1,16 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 
-export class Student {
+export class Course {
   _model: any;
   constructor(norm: any) {
     this.model = [{
       id: { type: Number, key: 'primary' },
       name: { type: String, maxlength: 24 },
-      email: { type: String, maxlength: 24 },
-      phonenum: { type: String, maxlength: 24 },
-      class: { type: String, maxlength: 24 },
-      group: { type: String, maxlength: 24 },
-      image_url: { type: String, maxlength: 1000},
+      professor: { type: String, maxlength: 24},
       user_id: {
         type: Number,
         key: 'foreign',
@@ -18,80 +14,80 @@ export class Student {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       },
-    }, 'A table to store students information model',
+    }, 'A table to store course information model',
     [
       {
-        route: '/get-all-students',
+        route: '/get-all-courses',
         method: 'POST',
-        callback: this.getAllStudents,
+        callback: this.getAllCourses,
         requireToken: true,
       },
       {
-        route: '/get-student-by-id/:id',
+        route: '/get-course-by-id/:id',
         method: 'POST',
-        callback: this.getStudentById,
+        callback: this.getCourseById,
         requireToken: true,
       },
       {
-        route: '/create-student',
+        route: '/create-course',
         method: 'POST',
-        callback: this.createStudent,
+        callback: this.createCourse,
         requireToken: true,
       },
       {
-        route: '/update-student/id/:id',
+        route: '/update-course/id/:id',
         method: 'PUT',
-        callback: this.updateStudent,
+        callback: this.updateCourse,
         requireToken: true,
       },
       {
-        route: '/delete-student/id/:id',
+        route: '/delete-course/id/:id',
         method: 'DELETE',
-        callback: this.deleteStudent,
+        callback: this.deleteCourse,
         requireToken: true,
       }
     ]
     ];
   }
 
-  createStudent(model: any) {
+  createCourse(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {
 
-      let studentCtrl = model.controller;
-      let resp = await studentCtrl.insert(req, null, null);
+      let courseCtrl = model.controller;
+      let resp = await courseCtrl.insert(req, null, null);
       res.json({ message: 'Success', resp });
     }
   }
 
-  updateStudent(model: any) {
+  updateCourse(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {
-      let studentCtrl = model.controller;
-      let resp = await studentCtrl.update(req, null, null);
+      let courseCtrl = model.controller;
+      let resp = await courseCtrl.update(req, null, null);
       res.json({ message: 'Success', resp });
     }
   }
 
-  deleteStudent(model: any) {
+  deleteCourse(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {
 
-      let studentCtrl = model.controller;
-      let resp = await studentCtrl.remove(req, null, null);
+      let courseCtrl = model.controller;
+      let resp = await courseCtrl.remove(req, null, null);
       res.json({ message: 'Success', resp });
     }
   }
 
-  getAllStudents(model: any) {
+  getAllCourses(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {
       req.body = {
         get: ['*']
       }
-      let studentCtrl = model.controller;
-      let resp = await studentCtrl.get(req, null, null);
+      let courseCtrl = model.controller;
+      let resp = await courseCtrl.get(req, null, null);
       res.json({ message: 'Success', resp });
     }
   }
 
-  getStudentById(model: any) {
+  getCourseById(model: any) {
     return async (req: Request, res: Response, next: NextFunction) => {
       req.body = {
         get: ['*'],
@@ -99,8 +95,8 @@ export class Student {
           id: req.params.id
         }
       }
-      let studentCtrl = model.controller;
-      let resp = await studentCtrl.get(req, null, null);
+      let courseCtrl = model.controller;
+      let resp = await courseCtrl.get(req, null, null);
       res.json({ message: 'Success', resp });
     }
   }

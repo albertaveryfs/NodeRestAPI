@@ -1,0 +1,182 @@
+Description: Get all the students from the database
+Endpoint: http://localohost:3002/api/v1/student/get-all-students
+Method: POST
+Params: none
+Request Payload: none
+Response: 
+{
+    "message": "Success",
+    "resp": {
+        "data": [
+            {
+                "id": 1,
+                "name": "Albert Avery",
+                "email": "ajaavery@gmail.com",
+                "phonenum": "5592038145",
+                "class": "IS183",
+                "group": "Class Contacts",
+                "user_id": 1,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-14T04:47:31.333Z",
+                "updated_at": "2020-04-14T04:47:31.333Z",
+                "deleted_at": null
+            },
+            {
+                "id": 2,
+                "name": "Fred Smith",
+                "email": "fredsmith@gmail.com",
+                "phonenum": "559123456",
+                "class": "IS187",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:21:51.964Z",
+                "updated_at": "2020-04-22T21:21:51.964Z",
+                "deleted_at": null
+            },
+            {
+                "id": 3,
+                "name": "John Doe",
+                "email": "johndoe@gmail.com",
+                "phonenum": "5591234567",
+                "class": "IS186",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:57:41.138Z",
+                "updated_at": "2020-04-22T21:57:41.138Z",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "name": "Lawrence Wood",
+                "email": "lawrencewood@gmail.com",
+                "phonenum": "5591234567",
+                "class": "ACCT4A",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:58:27.720Z",
+                "updated_at": "2020-04-22T21:58:27.720Z",
+                "deleted_at": null
+            },
+            {
+                "id": 5,
+                "name": "Ralph Bradley",
+                "email": "ralphbradley@gmail.com",
+                "phonenum": "5591234567",
+                "class": "IS110",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:59:12.262Z",
+                "updated_at": "2020-04-22T21:59:12.262Z",
+                "deleted_at": null
+            },
+            {
+                "id": 6,
+                "name": "William Weber",
+                "email": "williamweber@gmail.com",
+                "phonenum": "5591234567",
+                "class": "BA10",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:59:30.930Z",
+                "updated_at": "2020-04-22T21:59:30.930Z",
+                "deleted_at": null
+            }
+        ],
+        "statusCode": 200
+    }
+}
+
+----------------------------
+Description: Get student by its ID from the database
+Endpoint: http://localhost:3002/api/v1/student/id/:id
+Method: POST
+Params: id - the student id
+Request Payload: none
+Response:
+{
+                "id": 6,
+                "name": "William Weber",
+                "email": "williamweber@gmail.com",
+                "phonenum": "5591234567",
+                "class": "BA10",
+                "group": null,
+                "user_id": null,
+                "active": true,
+                "created_by": "aavery",
+                "updated_by": null,
+                "created_at": "2020-04-22T21:59:30.930Z",
+                "updated_at": "2020-04-22T21:59:30.930Z",
+                "deleted_at": null
+            }
+
+------------------------------
+Description: Create a new student record
+Endpoint: http://localhost:3002/api/v1/create-student
+Method: POST
+Params: none
+Request Payload:
+{
+    "name": "Fred Smith",
+    "email": "fredsmith@gmail.com",
+    "phonenum": "559123456",
+    "class": "IS187"
+}
+Response:
+{
+    "id": 2,
+    "email": "fredsmith@gmail.com",
+    "phonenum": "559123456",
+    "class": "IS187"
+}
+
+
+------------------------------
+Description: Update student record
+Endpoint: http://localhost:3002/api/v1/update-student/id/:id
+Method: PUT
+Params: id - the id of the student
+Request Payload:
+{
+    "name": "Fred Smith",
+    "email": "fredsmith@gmail.com",
+    "phonenum": "559123456",
+    "class": "IS187"
+}
+Response:
+{
+    "id": 2,
+    "email": "fredsmith@gmail.com",
+    "phonenum": "559123456",
+    "class": "IS187"
+}
+
+------------------------------
+Description: Delete student record
+Endpoint: http://localhost:3002/api/v1/delete-student/id/:id
+Method: DELETE
+Params: id - the id of the student
+Request Payload: none
+Response:
+{
+    "id": 2,
+    "email": "fredsmith@gmail.com",
+    "phonenum": "559123456",
+    "class": "IS187"
+}
